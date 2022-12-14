@@ -20,3 +20,4 @@ npm i --force
 
 npm start in roots and backend directory
 
+https://github.com/Onjacktallcuca/KanBanal/blob/main/public/screencshot1.png
