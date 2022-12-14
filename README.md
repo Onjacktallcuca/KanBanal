@@ -16,7 +16,7 @@ npm i --force
 
 cd backend
 
-npm init
+npm i --force
 
 npm start in roots and backend directory
 
