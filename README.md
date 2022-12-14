@@ -20,5 +20,6 @@ npm i --force
 
 npm start in roots and backend directory
 
+![alt text](https://github.com/Onjacktallcuca/KanBanal/blob/main/public/screencshot1.png)
 
-![alt text]([http://url/to/img.png](https://github.com/Onjacktallcuca/KanBanal/blob/main/public/screencshot1.png))
+
