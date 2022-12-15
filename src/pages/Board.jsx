@@ -18,29 +18,6 @@ let timer
 
 const timeout = 500
 
-const options = {
-  title: 'Title',
-  message: 'Message',
-  buttons: [
-    {
-      label: 'Yes',
-      onClick: () => alert('Click Yes')
-    },
-    {
-      label: 'No',
-      onClick: () => alert('Click No')
-    }
-  ],
-  closeOnEscape: true,
-  closeOnClickOutside: true,
-  keyCodeForClose: [8, 32],
-  willUnmount: () => {},
-  afterClose: () => {},
-  onClickOutside: () => {},
-  onKeypress: () => {},
-  onKeypressEscape: () => {},
-  overlayClassName: "overlay-custom-class-name"
-};
 
 const Board = () => {
   const dispatch = useDispatch()
@@ -69,7 +46,7 @@ const Board = () => {
         setIsFavourite(res.favourite)
         setIcon(res.icon)
       } catch (err) {
-        alert(err)
+        alert("Error: " + err)
       }
     }
     getBoard()
@@ -92,7 +69,7 @@ const Board = () => {
     try {
       await boardApi.update(boardId, { icon: newIcon })
     } catch (err) {
-      alert(err)
+      alert("Error: " + err)
     }
   }
 
@@ -118,7 +95,7 @@ const Board = () => {
       try {
         await boardApi.update(boardId, { title: newTitle })
       } catch (err) {
-        alert(err)
+        alert("Error: " + err)
       }
     }, timeout);
   }
@@ -131,7 +108,7 @@ const Board = () => {
       try {
         await boardApi.update(boardId, { description: newDescription })
       } catch (err) {
-        alert(err)
+        alert("Error: " + err)
       }
     }, timeout);
   }
@@ -148,7 +125,7 @@ const Board = () => {
       dispatch(setFavouriteList(newFavouriteList))
       setIsFavourite(!isFavourite)
     } catch (err) {
-      alert(err)
+      alert("Error: " + err)
     }
   }
 
@@ -178,7 +155,7 @@ const Board = () => {
               }
               dispatch(setBoards(newList))
             } catch (err) {
-              alert(err)
+              alert("Error: " + err)
             }
           }
         },

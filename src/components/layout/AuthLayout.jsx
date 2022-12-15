@@ -38,12 +38,11 @@ const AuthLayout = () => {
           flexDirection: 'column',
           backgroundColor: 'background.secondary',
           p: 4,
-          boxShadow: 2
+          boxShadow: 20
         }}>
-          <Typography variant='h5' sx={{ 
-            color: 'primary.main'
+          <Typography variant='h5' sx={{ color: 'primary.main'
           }}>
-            Pro-Manage
+            Login
           </Typography>
           <Outlet />
         </Box>

@@ -5,16 +5,21 @@ import Moment from 'moment'
 import { CKEditor } from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import taskApi from '../../api/taskApi'
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 
 import '../../css/custom-editor.css'
 
 const modalStyle = {
   outline: 'none',
   position: 'absolute',
+  zIndex: 'tooltip' ,
+  borderRadius: 2,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '50%',
+  width: '70%',
   bgcolor: 'background.paper',
   border: '0px solid #000',
   boxShadow: 24,
@@ -61,13 +66,17 @@ const TaskModal = props => {
   }
 
   const deleteTask = async () => {
-    try {
-      await taskApi.delete(boardId, task.id)
-      props.onDelete(task)
-      setTask(undefined)
-    } catch (err) {
-      alert(err)
-    }
+
+    if(window.confirm('Deseja excluir essa tarefa?')){
+      try {
+        await taskApi.delete(boardId, task.id)
+        props.onDelete(task)
+        setTask(undefined)
+      } catch (err) {
+        alert("Error: " + err)
+      }
+    };
+    
   }
 
   const updateTitle = async (e) => {
@@ -112,10 +121,15 @@ const TaskModal = props => {
       open={task !== undefined}
       onClose={onClose}
       closeAfterTransition
+      overflow= "hidden"
       BackdropComponent={Backdrop}
       BackdropProps={{ timeout: 500 }}
+      
     >
       <Fade in={task !== undefined}>
+
+    
+
         <Box sx={modalStyle}>
           <Box sx={{
             display: 'flex',
@@ -148,7 +162,7 @@ const TaskModal = props => {
               }}
             />
             <Typography variant='body2' fontWeight='700'>
-              {task !== undefined ? Moment(task.createdAt).format('YYYY-MM-DD') : ''}
+              {task !== undefined ? "Criado em: " + Moment(task.createdAt).format('YYYY-MM-DD') : ''}
             </Typography>
             <Divider sx={{ margin: '1.5rem 0' }} />
             <Box

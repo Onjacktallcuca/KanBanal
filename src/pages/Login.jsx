@@ -58,9 +58,12 @@ const Login = () => {
     <>
       <Box
         component='form'
-        sx={{ mt: 1 }}
+        sx={{ mt: 0 }}
         onSubmit={handleSubmit}
         noValidate
+        
+        
+        
       >
         <TextField
           margin='normal'
@@ -85,24 +88,38 @@ const Login = () => {
           error={passwordErrText !== ''}
           helperText={passwordErrText}
         />
-        <LoadingButton
-          sx={{ mt: 3, mb: 2 }}
-          variant='outlined'
-          fullWidth
-          color='success'
-          type='submit'
-          loading={loading}
-        >
-          Login
-        </LoadingButton>
+        <Box sx={{
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <LoadingButton
+            sx={{ mt: 1, mb: 1 }}
+            variant='contained'
+            //fullWidth
+            color='success'
+            type='submit'
+            loading={loading}
+            >
+            Login
+          </LoadingButton>
+        </Box>
+        <Box sx={{
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <Button
+            component={Link}
+            to='/signup'
+            sx={{ textTransform: 'none' }}
+          >
+            Don't have an account? Signup
+          </Button>
+        </Box>
       </Box>
-      <Button
-        component={Link}
-        to='/signup'
-        sx={{ textTransform: 'none' }}
-      >
-        Don't have an account? Signup
-      </Button>
     </>
   )
 }
